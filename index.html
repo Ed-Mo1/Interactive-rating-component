@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Interactive rating component</title>
+
+    <link rel="stylesheet" href="./src/bootstrap.min.css" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --dark-color: #252d37;
+        --light-black: #121417;
+        --gray-color: #6a6d71;
+        --gold-color: #e68226;
+        --shadow: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+      }
+
+      body {
+        overflow: hidden;
+        height: 100vh;
+        display: grid;
+        place-content: center;
+        background-color: #000000;
+      }
+      .card {
+        width: 90%;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        max-width: 500px;
+        border-radius: 40px;
+        background-color: var(--light-black);
+      }
+
+      .card .image {
+        background-color: var(--dark-color);
+        width: fit-content;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+      }
+
+      button {
+        background-color: var(--gold-color) !important;
+        color: white !important;
+        transition: all 0.5s ease-in;
+      }
+      button:hover {
+        background-color: #fff !important;
+        color: var(--gold-color) !important;
+      }
+
+      input + label {
+        background-color: var(--dark-color) !important;
+        color: white !important;
+        transition: all 0.5s ease-in;
+        border: none !important;
+      }
+      input:hover + label {
+        background-color: var(--gray-color) !important;
+      }
+
+      input:checked + label {
+        background-color: var(--gold-color) !important;
+      }
+
+      @media (width<400px) {
+        :root {
+          font-size: 12px;
+        }
+        .card {
+          border-radius: 20px;
+        }
+      }
+
+      .attribution {
+        color: #fff;
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card text-start p-2 p-md-4 mx-auto">
+      <div
+        class="card-body h-100 justify-content-center d-flex flex-column row-gap-3 border-0"
+      >
+        <div class="image p-3 rounded-pill mb-3">
+          <img
+            src="./images/icon-star.svg"
+            class="me-auto d-block"
+            alt=""
+            srcset=""
+          />
+        </div>
+        <h2 class="card-title text-light">How did we do?</h2>
+        <p class="card-text text-white-50">
+          Please let us know how we did with your support request. All feedback
+          is appreciated to help us improve our offering!
+        </p>
+        <form
+          action="./result.html"
+          method="get"
+          class="d-flex flex-wrap justify-content-between"
+        >
+          <input
+            type="radio"
+            class="btn-check"
+            value="1"
+            name="options"
+            id="option1"
+            autocomplete="off"
+          />
+          <label class="btn py-3 px-4 py-md-3 rounded-pill" for="option1"
+            >1</label
+          >
+
+          <input
+            type="radio"
+            class="btn-check"
+            name="options"
+            value="2"
+            id="option2"
+            autocomplete="off"
+          />
+          <label class="btn py-3 px-4 py-md-3 rounded-pill" for="option2"
+            >2</label
+          >
+
+          <input
+            type="radio"
+            class="btn-check"
+            name="options"
+            id="option3"
+            value="3"
+            autocomplete="off"
+          />
+          <label class="btn py-3 px-4 py-md-3 rounded-pill" for="option3"
+            >3</label
+          >
+
+          <input
+            type="radio"
+            class="btn-check"
+            name="options"
+            value="4"
+            id="option4"
+            autocomplete="off"
+          />
+          <label class="btn py-3 px-4 py-md-3 rounded-pill" for="option4"
+            >4</label
+          >
+          <input
+            type="radio"
+            class="btn-check"
+            value="5"
+            name="options"
+            id="option5"
+            autocomplete="off"
+          />
+          <label class="btn py-3 px-4 py-md-3 rounded-pill" for="option5"
+            >5</label
+          >
+          <button
+            type="submit"
+            class="btn py-3 w-100 mt-4 btn-lg text-uppercase rounded-pill"
+          >
+            submit
+          </button>
+        </form>
+        <div class="attribution">
+          Challenge by
+          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+            >Frontend Mentor</a
+          >. Coded by
+          <a href="https://www.frontendmentor.io/profile/Ed-Mo1"
+            >Eyad Muhammad</a
+          >.
+        </div>
+      </div>
+    </div>
+    <script>
+      let selectedValue;
+      document.querySelectorAll(`input[type='radio']`).forEach((el) => {
+        el.addEventListener("input", () => {
+          selectedValue = document.querySelector(
+            `input[type='radio']:checked`
+          ).value;
+        });
+      });
+
+      document.forms[0].onsubmit = (e) => {
+        if (!selectedValue) {
+          e.preventDefault();
+          alert("please select");
+        }
+      };
+    </script>
+  </body>
+</html>
